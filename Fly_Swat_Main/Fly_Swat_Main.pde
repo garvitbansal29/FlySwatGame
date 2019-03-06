@@ -1,9 +1,8 @@
+//Master
 Food cake;
 Fly[] Fly = new Fly[10];
 enum gameStatus {Play, SplashScreen, GameOver};
 gameStatus currentGameStatus = gameStatus.SplashScreen;
-//int mouseClickX;
-//int mouseClickY;
 boolean playBtnPressed = false;
 void setup()
 {
@@ -87,10 +86,8 @@ void lifeDisplay()
 }
 void mouseClicked()
 {
-  //mouseClickX = mouseX;
-  //mouseClickY = mouseY;
   for (int i = 0; i<Fly.length; i++) // Generate 6 flies
   {
-    Fly[i].flyClick(pmouseX, pmouseY);
+    Fly[i].flyClick(mouseX, mouseY);
   }
 }
