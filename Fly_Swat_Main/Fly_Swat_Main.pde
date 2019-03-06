@@ -1,4 +1,4 @@
-//Master
+
 Food cake;
 Fly[] Fly = new Fly[10];
 enum gameStatus {Play, SplashScreen, GameOver};
