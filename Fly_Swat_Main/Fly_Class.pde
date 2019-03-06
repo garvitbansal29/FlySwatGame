@@ -74,7 +74,7 @@ class Fly
       x+=dx;
       y+=dy;
   }
-  void flyClick()
+  void flyClick(int mouseClickX, int mouseClickY)
   {
     if ((mouseClickX>=x) &&(mouseClickX<=x+50))
     {
@@ -85,11 +85,11 @@ class Fly
     }
   }
   
-  void flyDieing()
+  void flyDying()
   {
     image(fly7,x,y,imgSize,imgSize); 
     if(y<height)
-      y = y+1;
+      y = y+5;
   }
   
   void flyEatFood() // check if fly reached food
@@ -98,6 +98,7 @@ class Fly
       if ((y+50 >= cake.y) && (y <=cake.y+100))
     {
       full = true;
+      cake.cakeLifeLost();
     }
   }
   
@@ -109,21 +110,22 @@ class Fly
  
   void render()
   {
-    flyEatFood();
+
     if(alive)
     {
+      flyEatFood();
       flyAnimation();
       moveToCake();
     }
     else if(!alive)
     {
-
-      flyDieing();
+      flyDying();
     }
     if(full)
     {
       flyFull();      
     }
   }
+  
   
 }
