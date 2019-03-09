@@ -5,7 +5,7 @@ class Fly
   int dx, dy;
   PImage fly1, fly2, fly3, fly4, fly5, fly6, fly7;
   int counter = 0;
-  int imgSize = 50;
+  int imgSize;
   int bufferDist;
   boolean alive;
   boolean full;
@@ -21,6 +21,7 @@ class Fly
     fly7 = loadImage("images/Fly/FlyDie.png");     
     alive = true;
     full = false;
+    imgSize = 80;
   }
   
   void setXandY()  
@@ -38,7 +39,7 @@ class Fly
   void flyAnimation() //creates the fly movement animation
   {
     if (counter>=0 && counter<=9){
-      image(fly1,x,y,50,50); 
+      image(fly1,x,y,imgSize,imgSize); 
     }
     else if (counter>=10 && counter<=19){
       image(fly2,x,y,imgSize,imgSize); 
