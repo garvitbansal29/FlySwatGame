@@ -1,7 +1,7 @@
 //flyLife update
 
 Food cake;
-Fly[] Fly = new Fly[0];
+Fly[] Fly = new Fly[5];
 Fly2[] Fly2 = new Fly2[5];
 enum gameStatus {Play, SplashScreen, GameOver};
 gameStatus currentGameStatus = gameStatus.SplashScreen;
@@ -9,7 +9,7 @@ boolean playBtnPressed = false;
 void setup()
 {
   size (800, 800);
-  cake = new Food(300, 300, 10);
+  cake = new Food(300, 300, 5);
   
   for(int i=0; i<Fly.length; i++)
   {
