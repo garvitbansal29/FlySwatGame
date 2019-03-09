@@ -1,6 +1,7 @@
-//Master
+//flyLife update
+
 Food cake;
-Fly[] Fly = new Fly[5];
+Fly[] Fly = new Fly[0];
 Fly2[] Fly2 = new Fly2[5];
 enum gameStatus {Play, SplashScreen, GameOver};
 gameStatus currentGameStatus = gameStatus.SplashScreen;

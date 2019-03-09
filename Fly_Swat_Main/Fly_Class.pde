@@ -9,6 +9,8 @@ class Fly
   int bufferDist;
   boolean alive;
   boolean full;
+  int flyLife;
+  int decSize;
   Fly()
   {
     setXandY();
@@ -22,6 +24,7 @@ class Fly
     alive = true;
     full = false;
     imgSize = 80;
+    flyLife = 1; 
   }
   
   void setXandY()  
@@ -79,7 +82,11 @@ class Fly
   {
     if ((mouseClickX>=x) && (mouseClickX<=x+imgSize )&& (mouseClickY>=y) && (mouseClickY<=y+imgSize))
     {
+      if (flyLife ==1)
+      {
         alive = false;
+      }
+      flyLife -=1;
     }
   }
   
