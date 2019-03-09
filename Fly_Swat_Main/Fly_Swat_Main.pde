@@ -1,7 +1,7 @@
 //Master
 Food cake;
-Fly[] Fly = new Fly[0];
-Fly2[] Fly2 = new Fly2[10];
+Fly[] Fly = new Fly[5];
+Fly2[] Fly2 = new Fly2[5];
 enum gameStatus {Play, SplashScreen, GameOver};
 gameStatus currentGameStatus = gameStatus.SplashScreen;
 boolean playBtnPressed = false;
@@ -87,12 +87,14 @@ void checkGameOver()
     currentGameStatus = gameStatus.GameOver;
   }
 }
+
 void lifeDisplay()
 {
   textSize(30);
   text("Life: "+cake.life,500,50);
   fill(0);   
 }
+
 void mouseClicked()
 {
   for (int i = 0; i<Fly.length; i++) // Generate 6 flies
