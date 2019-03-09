@@ -77,12 +77,9 @@ class Fly
   }
   void flyClick(int mouseClickX, int mouseClickY)
   {
-    if ((mouseClickX>=x) &&(mouseClickX<=x+50))
+    if ((mouseClickX>=x) && (mouseClickX<=x+imgSize )&& (mouseClickY>=y) && (mouseClickY<=y+imgSize))
     {
-      if ((mouseClickY>=y) &&(mouseClickY<=y+50))
-      {
         alive = false;
-      }
     }
   }
   
