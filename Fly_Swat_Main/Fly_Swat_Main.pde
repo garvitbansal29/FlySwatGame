@@ -1,6 +1,7 @@
 
 Food cake;
-Fly[] Fly = new Fly[10];
+Fly[] Fly = new Fly[0];
+Fly2[] Fly2 = new Fly2[5];
 enum gameStatus {Play, SplashScreen, GameOver};
 gameStatus currentGameStatus = gameStatus.SplashScreen;
 boolean playBtnPressed = false;
@@ -13,6 +14,10 @@ void setup()
   {
     Fly[i] = new Fly();
   }  
+  for(int i=0; i<Fly2.length; i++)
+  {
+    Fly2[i] = new Fly2();
+  }
 }
 
 void draw()
@@ -27,6 +32,10 @@ void draw()
       for (int i = 0; i<Fly.length; i++) // Generate 6 flies
       {
         Fly[i].render();
+      }
+      for(int i=0; i<Fly2.length; i++)
+      {
+        Fly2[i].render();
       }
       checkGameOver();
       break;
@@ -89,5 +98,9 @@ void mouseClicked()
   for (int i = 0; i<Fly.length; i++) // Generate 6 flies
   {
     Fly[i].flyClick(mouseX, mouseY);
+  }
+  for(int i=0; i<Fly2.length; i++)
+  {
+    Fly2[i].flyClick(mouseX, mouseY);
   }
 }
