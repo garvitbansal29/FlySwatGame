@@ -1,4 +1,4 @@
-//Naster
+//Master
 
 Food cake;
 Fly[] Fly = new Fly[5];
@@ -52,7 +52,6 @@ void draw()
       text("Game Over",(width/2)-100,(height/2)-50);
       fill(0);
       break;
-      
     }
   }
 }
