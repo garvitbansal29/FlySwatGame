@@ -39,7 +39,7 @@ class Fly
     while((x2>cake.x-bufferDist) && (x<cake.x+cake.size+bufferDist) &&(y2>cake.y-bufferDist)&&(y<cake.y+cake.size+bufferDist)); 
   }
   
-  void flyAnimation() //creates the fly movement animation
+  void movingFlyAnimation() //creates the fly movement animation
   {
     if (counter>=0 && counter<=9){
       image(fly1,x,y,imgSize,imgSize); 
@@ -62,7 +62,7 @@ class Fly
     counter +=1;
   }
   
-  void moveToCake()
+  void set_dx_dy()
   {
       int flyCenterX = x+(imgSize/2);
       int flyCenterY = y+(imgSize/2);
@@ -75,19 +75,20 @@ class Fly
       
       dx = int(Math.round(tx/dist*1)); 
       dy = int(Math.round(ty/dist*1));
-      x+=dx;
-      y+=dy;
   }
-  void flyClick(int mouseClickX, int mouseClickY)
+  void moveFly()
+  {
+    set_dx_dy();
+    x+=dx;
+    y+=dy;
+  }
+  boolean flyClick(int mouseClickX, int mouseClickY)
   {
     if ((mouseClickX>=x) && (mouseClickX<=x+imgSize )&& (mouseClickY>=y) && (mouseClickY<=y+imgSize))
     {
-      if (flyLife ==1)
-      {
-        alive = false;
-      }
-      flyLife -=1;
+      return true;
     }
+    return false;
   }
   
   void flyDying()
@@ -119,8 +120,8 @@ class Fly
     if(alive)
     {
       flyEatFood();
-      flyAnimation();
-      moveToCake();
+      movingFlyAnimation();
+      moveFly();
     }
     else if(!alive)
     {

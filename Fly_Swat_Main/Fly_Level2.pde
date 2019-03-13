@@ -5,7 +5,7 @@ class Fly2 extends Fly
     this.imgSize = 80;
     this.flyLife = 3;
   }
- @Override void flyClick(int mouseClickX, int mouseClickY)
+ //@Override boolean flyClick(int mouseClickX, int mouseClickY)
   {
     if ((mouseClickX>=x) && (mouseClickX<=x+imgSize )&& (mouseClickY>=y) && (mouseClickY<=y+imgSize))
     {
@@ -15,6 +15,12 @@ class Fly2 extends Fly
       }
       flyLife -=1;
       imgSize -=10;
+    }
+  }//
+  void checkFlyLife()
+  {
+    if (flyClick(  ))
+    {
     }
   }
   
