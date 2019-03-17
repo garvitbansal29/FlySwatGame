@@ -35,6 +35,7 @@ class Fly
       y = int(random(height - imgSize));
       x2 = x + imgSize;
       y2 = y+imgSize;
+      
     }
     while((x2>cake.x-bufferDist) && (x<cake.x+cake.size+bufferDist) &&(y2>cake.y-bufferDist)&&(y<cake.y+cake.size+bufferDist)); 
   }
