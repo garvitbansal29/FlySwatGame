@@ -1,21 +1,21 @@
 class Fly2 extends Fly
 {
+  int flyLife;
   Fly2()
   {
-    this.imgSize = 80;
-    this.flyLife = 3;
+    imgSize = 80;
+    flyLife = 3;
   }
- @Override void flyClick(int mouseClickX, int mouseClickY)
-  {
-    if ((mouseClickX>=x) && (mouseClickX<=x+imgSize )&& (mouseClickY>=y) && (mouseClickY<=y+imgSize))
-    {
-      if (flyLife ==1)
-      {
-        alive = false;
-      }
-      flyLife -=1;
-      imgSize -=10;
-    }
-  }
+ //<>//
+   @Override void killFly()
+   {
+     flyLife --;
+     imgSize -= 10;
+     if (flyLife ==0)
+     {
+       alive = false;
+     }
+     
+   }
   
 }

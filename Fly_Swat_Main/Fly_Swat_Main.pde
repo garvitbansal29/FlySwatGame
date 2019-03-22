@@ -1,15 +1,15 @@
 //3.0
 
 Food cake;
-Fly[] Fly = new Fly[5];
-Fly2[] Fly2 = new Fly2[5];
+Fly[] Fly = new Fly[0];
+Fly2[] Fly2 = new Fly2[10];
 enum gameStatus {Play, SplashScreen, GameOver};
 gameStatus currentGameStatus = gameStatus.SplashScreen;
 boolean playBtnPressed = false;
 void setup()
 {
   size (800, 800);
-  cake = new Food(300, 300, 5);
+  cake = new Food(300, 300, 15);
   
   for(int i=0; i<Fly.length; i++)
   {
