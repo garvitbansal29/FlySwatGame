@@ -13,6 +13,8 @@ void setup()
   {
     if (i%2 == 0)
       Fly[i] = new Fly1();
+    else
+      Fly[i] = new Fly2();
   }
 }
 

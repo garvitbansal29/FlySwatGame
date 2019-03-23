@@ -3,7 +3,7 @@ class Fly1 extends mainFly
 
   Fly1()
   {
-    imgSize = 80;
+    imgSize = 50;
   }
   
   
