@@ -1,8 +1,9 @@
-//Master
+//Swatter
 
 Food cake;
 mainFly[] Fly = new mainFly[10];
 enum gameStatus {Play, SplashScreen, GameOver};
+enum gameMode {levels, endless};
 gameStatus currentGameStatus = gameStatus.SplashScreen;
 boolean playBtnPressed = false;
 void setup()
