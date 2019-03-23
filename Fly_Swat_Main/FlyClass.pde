@@ -8,7 +8,8 @@ class mainFly
   boolean alive;
   boolean full;
   int decSize;
-  int [] speed = {1, 10};
+  int [] speed = {1, 10}; // 2 speeds, 1st for speed when alive, second when fly dies.
+  
   mainFly()
   {
     setXandY();
@@ -22,7 +23,6 @@ class mainFly
     alive = true;
     full = false;
   }
-  
     
   void setXandY()  
   {
