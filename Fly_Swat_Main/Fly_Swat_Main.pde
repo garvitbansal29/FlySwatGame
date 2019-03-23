@@ -1,4 +1,4 @@
-//Polymorphism
+//Master
 
 Food cake;
 mainFly[] Fly = new mainFly[10];
