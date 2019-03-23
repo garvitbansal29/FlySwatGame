@@ -1,4 +1,4 @@
-class Fly2 extends Fly
+class Fly2 extends mainFly
 {
   int flyLife;
   Fly2()
@@ -6,15 +6,14 @@ class Fly2 extends Fly
     imgSize = 80;
     flyLife = 3;
   }
- //<>//
-   @Override void killFly()
+   @Override void killFly() //<>//
    {
      flyLife --;
-     imgSize -= 10;
      if (flyLife ==0)
      {
        alive = false;
      }
+    imgSize -= 10;
      
    }
   

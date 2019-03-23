@@ -1,8 +1,7 @@
-//Master
+//Polymorphism
 
 Food cake;
-Fly[] Fly = new Fly[0];
-Fly2[] Fly2 = new Fly2[10];
+mainFly[] Fly = new mainFly[10];
 enum gameStatus {Play, SplashScreen, GameOver};
 gameStatus currentGameStatus = gameStatus.SplashScreen;
 boolean playBtnPressed = false;
@@ -10,14 +9,10 @@ void setup()
 {
   size (800, 800);
   cake = new Food(300, 300, 15);
-  
   for(int i=0; i<Fly.length; i++)
   {
-    Fly[i] = new Fly();
-  }  
-  for(int i=0; i<Fly2.length; i++)
-  {
-    Fly2[i] = new Fly2();
+    if (i%2 == 0)
+      Fly[i] = new Fly1();
   }
 }
 
@@ -33,10 +28,6 @@ void draw()
       for (int i = 0; i<Fly.length; i++) // Generate 6 flies
       {
         Fly[i].render();
-      }
-      for(int i=0; i<Fly2.length; i++)
-      {
-        Fly2[i].render();
       }
       checkGameOver();
       break;
@@ -100,9 +91,5 @@ void mouseClicked()
   for (int i = 0; i<Fly.length; i++) // Generate 6 flies
   {
     Fly[i].flyClick(mouseX, mouseY);
-  }
-  for(int i=0; i<Fly2.length; i++)
-  {
-    Fly2[i].flyClick(mouseX, mouseY);
   }
 }
