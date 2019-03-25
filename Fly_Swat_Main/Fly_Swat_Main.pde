@@ -73,6 +73,7 @@ void splashScreen()
   textSize(30);
   text("Play", playBtnX+120,playBtnY+50); // Display the text "Play" inside the button
 }
+
 void checkGameOver()
 {
   if (cake.life==0)

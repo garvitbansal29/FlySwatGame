@@ -13,8 +13,6 @@ class Fly2 extends mainFly
      {
        alive = false;
      }
-    imgSize -= 10;
-     
+     imgSize -= 10; 
    }
-  
 }

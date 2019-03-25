@@ -5,9 +5,4 @@ class Fly1 extends mainFly
   {
     imgSize = 50;
   }
-  
-  
-  
-  
- 
 }

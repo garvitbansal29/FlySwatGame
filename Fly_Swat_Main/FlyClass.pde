@@ -71,8 +71,7 @@ class mainFly
       flySpeed = speed[1];
     x+=dx*flySpeed;
     y+=dy*flySpeed;
-  }
-  
+  }  
   
   void setDxDy()
   {
