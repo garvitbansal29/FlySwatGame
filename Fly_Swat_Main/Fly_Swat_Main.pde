@@ -1,4 +1,4 @@
-//Master
+//Endless mode
 flyswatter swatter;
 Food cake;
 mainFly[] Fly = new mainFly[10];
