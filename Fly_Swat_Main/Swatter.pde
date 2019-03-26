@@ -14,14 +14,6 @@ class flyswatter
   void render()
   {
     noCursor();
-    clickAnimation();
     image(swatterImage, mouseX, mouseY,imgSize ,imgSize);
-  }
-  void clickAnimation()
-  {
-    while (mousePressed)
-    {
-      imgSize = 20;
-    }
   }
 }

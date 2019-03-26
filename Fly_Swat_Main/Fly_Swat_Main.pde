@@ -34,13 +34,12 @@ void draw()
         Fly[i].render();
       }
       checkGameOver();
+      swatter.render();
       break;
     }
     case SplashScreen:
     {
-      background(255, 0, 0);
       splashScreen();
-      swatter.render();
       break;
     }
     case GameOver:
