@@ -1,14 +1,16 @@
-//Master
-
+//Swatter
+flyswatter swatter;
 Food cake;
 mainFly[] Fly = new mainFly[10];
 enum gameStatus {Play, SplashScreen, GameOver};
+enum gameMode {levels, endless};
 gameStatus currentGameStatus = gameStatus.SplashScreen;
 boolean playBtnPressed = false;
 void setup()
 {
   size (800, 800);
   cake = new Food(300, 300, 15);
+  swatter = new flyswatter(500, 500);
   for(int i=0; i<Fly.length; i++)
   {
     if (i%2 == 0)
@@ -32,6 +34,7 @@ void draw()
         Fly[i].render();
       }
       checkGameOver();
+      swatter.render();
       break;
     }
     case SplashScreen:
