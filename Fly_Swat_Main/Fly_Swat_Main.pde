@@ -1,14 +1,18 @@
 //Endless mode
 flyswatter swatter;
 Food cake;
-mainFly[] Fly = new mainFly[10];
+int arrayLength;
+mainFly[] Fly = new mainFly[arrayLength];
 enum gameStatus {Play, SplashScreen, GameOver};
 enum gameMode {levels, endless};
-gameStatus currentGameStatus = gameStatus.SplashScreen;
+gameMode currentGameMode = gameMode.endless;
+gameStatus currentGameStatus = gameStatus.Play;
 boolean playBtnPressed = false;
+
 void setup()
 {
   size (800, 800);
+  setFlyLength();
   cake = new Food(300, 300, 15);
   swatter = new flyswatter(500, 500);
   for(int i=0; i<Fly.length; i++)
@@ -19,7 +23,10 @@ void setup()
       Fly[i] = new Fly2();
   }
 }
-
+void setFlyLength()
+{
+  this.arrayLength = 10;
+}
 void draw()
 {
   background(255);
