@@ -9,6 +9,7 @@ class mainFly
   boolean full;
   int decSize;
   int [] speed = {1, 10}; // 2 speeds, 1st for speed when alive, second when fly dies.
+  int deathCount;
   
   mainFly()
   {
@@ -116,6 +117,7 @@ class mainFly
   void killFly()
   {
     alive = false;
+    deathCount++;
   }
   
   void flyEatFood() // check if fly reached food
