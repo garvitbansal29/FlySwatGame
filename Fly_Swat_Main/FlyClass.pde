@@ -106,7 +106,8 @@ class mainFly
 
   void flyClick(int mouseClickX, int mouseClickY)
   {
-    if ((mouseClickX>=x) && (mouseClickX<=x+imgSize )&& (mouseClickY>=y) && (mouseClickY<=y+imgSize))
+    int swatterSize = swatter.imgSize;
+    if ((mouseClickX+swatterSize>=x) && (mouseClickX<=x+imgSize )&& (mouseClickY+swatterSize>=y) && (mouseClickY<=y+imgSize))
     {
       killFly();
     }

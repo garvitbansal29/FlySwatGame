@@ -9,7 +9,7 @@ boolean playBtnPressed = false;
 void setup()
 {
   size (800, 800);
-  cake = new Food(300, 300, 15);
+  cake = new Food(300, 300, 5);
   swatter = new flyswatter(500, 500);
   for(int i=0; i<Fly.length; i++)
   {
