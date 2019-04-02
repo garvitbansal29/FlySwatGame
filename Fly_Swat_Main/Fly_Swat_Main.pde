@@ -1,15 +1,20 @@
 //Add levels
 flyswatter swatter;
 Food cake;
-mainFly[] Fly = new mainFly[10];
+mainFly[] Fly = new mainFly[5];
 enum gameStatus {Play, SplashScreen, GameOver};
-enum gameMode {levels, endless};
-gameStatus currentGameStatus = gameStatus.SplashScreen;
+gameStatus currentGameStatus = gameStatus.Play;
+enum gameLvl {lvl1, lvl2};
+gameLvl currentLvl = gameLvl.lvl1;
 boolean playBtnPressed = false;
+int points=0;
+int size = 0;
 void setup()
 {
+  
   size (800, 800);
   cake = new Food(300, 300, 10);
+  
   swatter = new flyswatter(500, 500);
   for(int i=0; i<Fly.length; i++)
   {
@@ -29,6 +34,7 @@ void draw()
     {
       cake.render();
       lifeDisplay();
+      pointsDisplay();
       for (int i = 0; i<Fly.length; i++) // Generate 6 flies
       {
         Fly[i].render();
@@ -98,4 +104,11 @@ void mouseClicked()
   {
     Fly[i].flyClick(mouseX, mouseY);
   }
+}
+
+void pointsDisplay()
+{
+  textSize(30);
+  text("Points: "+points,50,50);
+  fill(0);   
 }
