@@ -1,4 +1,4 @@
-//Global variable removal trial
+//Master
 flyswatter swatter;
 Food cake;
 mainFly[] Fly = new mainFly[5];
