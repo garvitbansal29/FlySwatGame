@@ -44,8 +44,8 @@ void draw()
       case lvl1:
         {
           waveSize = 1;
-          if (points > 1)
-            currentLvl = gameLvl.lvl2;
+          //if (points > 1)
+            //currentLvl = gameLvl.lvl2;
           break;
         }
       case lvl2:
