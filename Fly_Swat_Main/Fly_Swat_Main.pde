@@ -1,4 +1,4 @@
-//Master
+//fix mouse Click
 flyswatter swatter;
 Food cake;
 mainFly[] Fly = new mainFly[100];
