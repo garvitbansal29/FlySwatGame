@@ -6,14 +6,14 @@ class Fly2 extends mainFly
     imgSize = 80;
     flyLife = 3;
   }
-   @Override void killFly() //<>// //<>//
-   {
-     flyLife --;
-     if (flyLife ==0)
-     {
-       alive = false;
-       points++;
-     }
-     imgSize -= 10;
-   }
+  @Override void killFly() //<>// //<>// //<>// //<>//
+  {
+    flyLife --;
+    if (flyLife ==0)
+    {
+      alive = false;
+      incrementPoints();
+    }
+    imgSize -= 10;
+  }
 }

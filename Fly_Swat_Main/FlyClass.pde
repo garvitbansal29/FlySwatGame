@@ -5,11 +5,10 @@ class mainFly
   PImage fly1, fly2, fly3, fly4, fly5, fly6, fly7;
   PImage die1, die2, die3, die4, die5, die6, die7;  
   int counter = 0;
-  int counte =0;
+  int counter2 =0;
   int imgSize;
-  boolean alive;
-  boolean full;
-  int decSize;
+  boolean alive = true;
+  boolean full = false;
   int [] speed = {1, 5}; // 2 speeds, 1st for speed when alive, second when fly dies.
 
   mainFly()
@@ -20,7 +19,7 @@ class mainFly
     fly3 = loadImage("images/BetterFlies/3.png");
     fly4 = loadImage("images/BetterFlies/4.png");
     fly5 = loadImage("images/BetterFlies/5.png");
-    fly7 = loadImage("images/Fly/FlyDie.png"); 
+
     die1 = loadImage("images/BetterFlies/Die/1.png");
     die2 = loadImage("images/BetterFlies/Die/2.png");
     die3 = loadImage("images/BetterFlies/Die/3.png");
@@ -28,8 +27,6 @@ class mainFly
     die5 = loadImage("images/BetterFlies/Die/5.png");
     die6 = loadImage("images/BetterFlies/Die/6.png");
     die7 = loadImage("images/BetterFlies/Die/7.png");
-    alive = true;
-    full = false;
   }
 
   void setXandY()  
@@ -38,7 +35,7 @@ class mainFly
     int x2, y2;
     do 
     {
-      x = int(random(width-imgSize));
+      x = int(random(width - imgSize));
       y = int(random(height - imgSize));
       x2 = x + imgSize;
       y2 = y + imgSize;
@@ -63,19 +60,6 @@ class mainFly
     }
     counter +=1;
   }
-
-  void moveFly()
-  {
-    int flySpeed;
-    setDxDy();
-    if (alive)
-      flySpeed = speed[0];
-    else 
-    flySpeed = speed[1];
-    x+=dx*flySpeed;
-    y+=dy*flySpeed;
-  }  
-
   void setDxDy()
   {
     int flyCenterX = x+(imgSize/2);
@@ -94,32 +78,43 @@ class mainFly
       tx = 1;
       ty = height+50 - flyCenterY;
     }
+
     double dist = Math.sqrt((tx*tx)+(ty*ty));
 
     dx = int(Math.round(tx/dist*1)); 
     dy = int(Math.round(ty/dist*1));
   }
 
-
-  void flyDieingAnimation()
+  void moveFly()
   {
-    int q=5;
-    if (counte>=0 && counte<5) {
+    int flySpeed;
+    setDxDy();
+    if (alive)
+      flySpeed = speed[0]; //alive speed - currently set to 1
+    else 
+    flySpeed = speed[1]; //dead speed - currently set to 5
+    x+=dx*flySpeed;
+    y+=dy*flySpeed;
+  }  
+
+  void flyDieingAnimation()                // second set of animation, performed when fly dies
+  {
+    if (counter2>=0 && counter2<5) {
       image(die1, x, y, imgSize, imgSize);
-    } else if (counte>=5 && counte<10) {
+    } else if (counter2>=5 && counter2<10) {
       image(die2, x, y, imgSize, imgSize);
-    } else if (counte>=10 && counte<15) {
+    } else if (counter2>=10 && counter2<15) {
       image(die3, x, y, imgSize, imgSize);
-    } else if (counte>=15 && counte<20) {
+    } else if (counter2>=15 && counter2<20) {
       image(die4, x, y, imgSize, imgSize);
-    } else if (counte>=20 && counte<25) {
+    } else if (counter2>=20 && counter2<25) {
       image(die5, x, y, imgSize, imgSize);
-    } else if (counte>=25 && counte<30) {
+    } else if (counter2>=25 && counter2<30) {
       image(die6, x, y, imgSize, imgSize);
-    } else if (counte>30 && counte<35){
+    } else if (counter2>30 && counter2<35) {
       image(die7, x, y, imgSize, imgSize);
     }
-    counte +=1;
+    counter2 +=1;
   }
 
   void flyClick(int mouseClickX, int mouseClickY)
@@ -134,8 +129,14 @@ class mainFly
   void killFly()
   {
     alive = false;
+    incrementPoints();
+  }
+
+  void incrementPoints()
+  {
     points++;
   }
+
   void flyEatFood() // check if fly reached food
   {
     if ((x+50 >= cake.x) && (x <=cake.x+100))
