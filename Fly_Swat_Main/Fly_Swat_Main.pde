@@ -1,7 +1,7 @@
 //Master
 flyswatter swatter;
 Food cake;
-mainFly[] Fly = new mainFly[5];
+mainFly[] Fly = new mainFly[1];
 enum gameStatus {
   Play, SplashScreen, GameOver
 };
@@ -105,7 +105,8 @@ void mouseClicked()
 {
   for (int i = 0; i<Fly.length; i++) // Generate 6 flies
   {
-    Fly[i].flyClick(mouseX, mouseY);
+
+      Fly[i].flyClick(mouseX, mouseY);
   }
 }
 
