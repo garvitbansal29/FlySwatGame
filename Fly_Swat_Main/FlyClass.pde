@@ -120,7 +120,7 @@ class mainFly
   void flyClick(int mouseClickX, int mouseClickY)
   {
     int swatterSize = swatter.imgSize;
-    if ((mouseClickX+swatterSize>=x) && (mouseClickX<=x+imgSize )&& (mouseClickY+swatterSize>=y) && (mouseClickY<=y+imgSize) && (alive))
+    if ((mouseClickX+swatterSize>=x) && (mouseClickX<=x+imgSize )&& (mouseClickY+swatterSize>=y) && (mouseClickY<=y+imgSize) && (alive)) //check is mouse is in the hitbox range and if the fly is alive. player is not able to hit dead fly for points.
     {
       killFly();
     }
@@ -129,7 +129,7 @@ class mainFly
   void killFly()
   {
     alive = false;
-   incrementPoints();
+    incrementPoints();
   }
 
   void incrementPoints()

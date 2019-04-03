@@ -1,7 +1,7 @@
-//Master
+//Add Levels
 flyswatter swatter;
 Food cake;
-mainFly[] Fly = new mainFly[1];
+mainFly[] Fly = new mainFly[100];
 enum gameStatus {
   Play, SplashScreen, GameOver
 };
@@ -12,7 +12,8 @@ enum gameLvl {
 gameLvl currentLvl = gameLvl.lvl1;
 boolean playBtnPressed = false;
 int points=0;
-int size = 0;
+int waveSize = 0;
+
 void setup()
 {
   size (800, 800);
@@ -38,10 +39,26 @@ void draw()
       cake.render();
       lifeDisplay();
       pointsDisplay();
-      for (int i = 0; i<Fly.length; i++) // Generate 6 flies
+      switch (currentLvl)
+      {
+      case lvl1:
+        {
+          waveSize = 1;
+          if (points > 1)
+            currentLvl = gameLvl.lvl2;
+          break;
+        }
+      case lvl2:
+        {
+          waveSize = 3;
+          break;
+        }
+      }
+      for (int i = 0; i<waveSize; i++) // Generate 6 flies
       {
         Fly[i].render();
       }
+
       checkGameOver();
       swatter.render();
       break;
@@ -105,7 +122,7 @@ void mouseClicked()
 {
   for (int i = 0; i<Fly.length; i++) // Generate 6 flies
   {
-
+    if (Fly[i].alive)
       Fly[i].flyClick(mouseX, mouseY);
   }
 }
