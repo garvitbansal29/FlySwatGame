@@ -1,7 +1,7 @@
 //Global variable removal trial
 flyswatter swatter;
 Food cake;
-mainFly[] Fly = new mainFly[50];
+mainFly[] Fly = new mainFly[5];
 enum gameStatus {
   Play, SplashScreen, GameOver
 };
