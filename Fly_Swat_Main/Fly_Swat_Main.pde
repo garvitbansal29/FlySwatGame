@@ -7,12 +7,14 @@ enum gameStatus {
 };
 gameStatus currentGameStatus = gameStatus.Play;
 enum gameLvl {
-  lvl1, lvl2
+  lvl1, lvl2, lvl3, lvl4
 };
+int [] lvlWaveSize = {0,1, 3, 7, 15};
 gameLvl currentLvl = gameLvl.lvl1;
 boolean playBtnPressed = false;
 int points=0;
 int waveSize = 0;
+int fullFlies=0;
 
 void setup()
 {
@@ -43,14 +45,34 @@ void draw()
       {
       case lvl1:
         {
-          waveSize = 1;
-          if (points > 1)
+          waveSize = lvlWaveSize[1];
+          if (aliveFlies (waveSize, points) == 0)
+          {
             currentLvl = gameLvl.lvl2;
+          }
           break;
         }
       case lvl2:
         {
-          waveSize = 3;
+          waveSize = lvlWaveSize[2];
+          if (aliveFlies (waveSize, points) == 0)
+          {
+            currentLvl = gameLvl.lvl3;
+          }
+          break;
+        }
+      case lvl3:
+        {
+          waveSize = lvlWaveSize[3];
+          if (aliveFlies (waveSize, points) == 0)
+          {
+            currentLvl = gameLvl.lvl4;
+          }
+          break;
+        }
+      case lvl4:
+        {
+          waveSize = lvlWaveSize[4];
           break;
         }
       }
@@ -103,6 +125,18 @@ void splashScreen()
   text("Play", playBtnX+120, playBtnY+50); // Display the text "Play" inside the button
 }
 
+int aliveFlies (int waveSize, int points)
+{
+  int fullFlies1 = 0;
+  int totalFlies = waveSize;
+  for (int i = 0; i<waveSize; i++) // Generate 6 flies
+  {
+    if (Fly[i].flyEatFood())
+      fullFlies1++;
+  }
+  return totalFlies = totalFlies -fullFlies1 - points;
+}
+
 void checkGameOver()
 {
   if (cake.life==0)
@@ -122,8 +156,7 @@ void mouseClicked()
 {
   for (int i = 0; i<waveSize; i++) // Generate 6 flies
   {
-    if (Fly[i].alive)
-      Fly[i].flyClick(mouseX, mouseY);
+    Fly[i].flyClick(mouseX, mouseY);
   }
 }
 

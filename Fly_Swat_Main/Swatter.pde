@@ -4,7 +4,7 @@ class flyswatter
   PImage swatterImage;
   int imgSize = 50;
   int counter;
-  
+
   flyswatter(int x, int y)
   {
     this.x = x;
@@ -14,6 +14,6 @@ class flyswatter
   void render()
   {
     noCursor();
-    image(swatterImage, mouseX, mouseY,imgSize ,imgSize);
+    image(swatterImage, mouseX, mouseY, imgSize, imgSize);
   }
 }

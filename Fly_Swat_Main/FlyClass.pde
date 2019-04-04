@@ -137,14 +137,24 @@ class mainFly
     points++;
   }
 
-  void flyEatFood() // check if fly reached food
+  boolean flyEatFood() // check if fly reached food
   {
     if ((x+50 >= cake.x) && (x <=cake.x+100))
       if ((y+50 >= cake.y) && (y <=cake.y+100))
       {
-        full = true;
-        cake.cakeLifeLost();
+        return true;
       }
+      return false;
+  }
+  
+  void whenFlyEatFood()
+  {
+    if (flyEatFood())
+    {
+              full = true;
+        cake.cakeLifeLost();
+    }
+    
   }
 
   void flyFull()
@@ -157,7 +167,7 @@ class mainFly
   {
     if (alive)
     {
-      flyEatFood();
+      whenFlyEatFood();
       flyAnimation();
       moveFly();
     }
