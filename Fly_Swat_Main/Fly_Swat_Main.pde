@@ -120,7 +120,7 @@ void lifeDisplay()
 
 void mouseClicked()
 {
-  for (int i = 0; i<Fly.length; i++) // Generate 6 flies
+  for (int i = 0; i<waveSize; i++) // Generate 6 flies
   {
     if (Fly[i].alive)
       Fly[i].flyClick(mouseX, mouseY);
