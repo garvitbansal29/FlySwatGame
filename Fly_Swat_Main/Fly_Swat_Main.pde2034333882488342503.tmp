@@ -48,7 +48,7 @@ void draw()
         {
           displayText("lvl1", 20, width/2, 50);
           waveSize = lvlWaveSize[1];
-          if (aliveFlies (waveSize) == 0 && cake.life>0)  //Checks if all flies are dead and player still has a life.
+          if (aliveFlies (waveSize, points) == 0 && cake.life>0)  //Checks if all flies are dead and player still has a life.
           {
             currentLvl = gameLvl.lvl2;
           }
@@ -58,7 +58,7 @@ void draw()
         {
           displayText("lvl2", 20, width/2, 50);
           waveSize = lvlWaveSize[2];
-          if (aliveFlies (waveSize) == 0 && cake.life>0)
+          if (aliveFlies (waveSize, points) == 0 && cake.life>0)
           {
             currentLvl = gameLvl.lvl3;
           }
@@ -68,7 +68,7 @@ void draw()
         {
           displayText("lvl3", 20, width/2, 50);
           waveSize = lvlWaveSize[3];
-          if (aliveFlies (waveSize) == 0 && cake.life>0)
+          if (aliveFlies (waveSize, points) == 0 && cake.life>0)
           {
             currentLvl = gameLvl.lvl4;
           }
@@ -78,7 +78,7 @@ void draw()
         {
           displayText("lvl4", 20, width/2, 50);
           waveSize = lvlWaveSize[4];
-          if (aliveFlies (waveSize) == 0 && cake.life>0)
+          if (aliveFlies (waveSize, points) == 0 && cake.life>0)
           {
             currentLvl = gameLvl.lvl4;
             currentGameStatus = gameStatus.WinScreen; //If player beats lvl 4, they win the game.
@@ -90,6 +90,7 @@ void draw()
       {
         Fly[i].render();
       }
+      displayText(str(aliveFlies (waveSize, points)), 20, width/2, 700);
       checkGameOver(); //Game over when all lives are lost
       swatter.render(); //
       break;
@@ -121,8 +122,7 @@ void displayText(String textToDisplay, int size, int x, int y)
   textAlign(CENTER);
   text(textToDisplay, x, y);
 }
-
-void splashScreen()      //Makes the splash screen
+void splashScreen()
 {
   int playBtnX, playBtnY;
   int playBtnLength = 300;
@@ -135,7 +135,7 @@ void splashScreen()      //Makes the splash screen
     currentGameStatus = gameStatus.Play;
 }
 
-boolean createBtn(int x, int y, int btnLength, int btnHeight, String textToDisplay, int textSize, int textX, int textY ) //Simple funciton to create a btn. 
+boolean createBtn(int x, int y, int btnLength, int btnHeight, String textToDisplay, int textSize, int textX, int textY )
 {
   rect(x, y, btnLength, btnHeight);
   displayText(textToDisplay, textSize, textX, textY);
@@ -149,7 +149,7 @@ boolean createBtn(int x, int y, int btnLength, int btnHeight, String textToDispl
   return false;
 }
 
-int aliveFlies (int waveSize)           //Checks how many flies are alive any moment in the game. Helps to progress to further levels.
+int aliveFlies (int waveSize, int points)
 {
   int fullFlies = 0;  
   int deadFlyCount = 0;
@@ -164,7 +164,7 @@ int aliveFlies (int waveSize)           //Checks how many flies are alive any mo
   return totalFlies;
 }
 
-void checkGameOver()  //Checks if game is over when player loses all the lives
+void checkGameOver()
 {
   if (cake.life==0)
   {
@@ -172,7 +172,7 @@ void checkGameOver()  //Checks if game is over when player loses all the lives
   }
 }
 
-void lifeDisplay()  //Displays how many lives player has left
+void lifeDisplay()
 {
   textSize(30);
   textAlign(RIGHT);
@@ -180,7 +180,7 @@ void lifeDisplay()  //Displays how many lives player has left
   fill(0);
 }
 
-void mouseClicked() //When mouse click is triggered it checks if the player clied the enemy flies to kill them.
+void mouseClicked()
 {
   for (int i = 0; i<waveSize; i++) // Generate 6 flies
   {

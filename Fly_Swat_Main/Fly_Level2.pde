@@ -1,4 +1,4 @@
-class Fly2 extends mainFly
+class Fly2 extends mainFly // fly 2 is bigger, and needs 3 clicks to die. Also grows smaller after every click.
 {
   int flyLife;
   Fly2()

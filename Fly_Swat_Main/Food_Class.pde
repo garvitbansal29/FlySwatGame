@@ -1,10 +1,10 @@
-class Food
+class Food //Food is the cake
 {
   int x;
   int y;
   int size = 150;
   PImage cakeImg;
-  int life;
+  int life; //Cake has lives (player life)
   Food (int x, int y, int life)
   {
     this.life = life;

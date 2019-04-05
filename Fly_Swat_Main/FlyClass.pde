@@ -2,18 +2,18 @@ class mainFly
 {
   int x, y;
   int dx, dy;
-  PImage fly1, fly2, fly3, fly4, fly5, fly6, fly7;
-  PImage die1, die2, die3, die4, die5, die6, die7;  
-  int counter = 0;
-  int counter2 =0;
-  int imgSize;
-  boolean alive = true;
-  boolean full = false;
+  PImage fly1, fly2, fly3, fly4, fly5;   //Images for when flies are moving 
+  PImage die1, die2, die3, die4, die5, die6, die7;  //Images to animate dieing flies
+  int counter = 0; //Counter 1 for first set of animation
+  int counter2 = 0; //counter 2 for second set of animations
+  int imgSize; 
+  boolean alive = true; //Flies are alive by default when they are created
+  boolean full = false; //Flies are not full by defaut when they are created, ie they have not eaten cake.
   int [] speed = {1, 5}; // 2 speeds, 1st for speed when alive, second when fly dies.
 
   mainFly()
   {
-    setXandY();
+    setXandY();  
     fly1 = loadImage("images/BetterFlies/1.png");
     fly2 = loadImage("images/BetterFlies/2.png");
     fly3 = loadImage("images/BetterFlies/3.png");
@@ -29,9 +29,9 @@ class mainFly
     die7 = loadImage("images/BetterFlies/Die/7.png");
   }
 
-  void setXandY()  
+  void setXandY()  //Generates initialising position for the flies
   {
-    int bufferDist = 100;
+    int bufferDist = 100; //a buffer distance. so flies wont be generated too close to the cake. Gives player extra time to react.
     int x2, y2;
     do 
     {
@@ -40,7 +40,7 @@ class mainFly
       x2 = x + imgSize;
       y2 = y + imgSize;
     }
-    while ((x2>cake.x-bufferDist) && (x<cake.x+cake.size+bufferDist) &&(y2>cake.y-bufferDist)&&(y<cake.y+cake.size+bufferDist)); //fly is not inside the cake when it is created
+    while ((x2>cake.x-bufferDist) && (x<cake.x+cake.size+bufferDist) &&(y2>cake.y-bufferDist)&&(y<cake.y+cake.size+bufferDist)); //fly is not inside the cake when it is created. and still with in the canvas
   }  
 
   void flyAnimation() //creates the fly movement animation
@@ -60,7 +60,7 @@ class mainFly
     }
     counter +=1;
   }
-  void setDxDy()
+  void setDxDy()  //Set the dx and dy for fly to move. based on if fly is alive or dead.
   {
     int flyCenterX = x+(imgSize/2);
     int flyCenterY = y+(imgSize/2);
@@ -69,11 +69,11 @@ class mainFly
     int tx=0;
     int ty=0;
 
-    if (alive)
+    if (alive)  //if fly is alive the target is the centre of the cake.
     {
       tx = cakeCenterX - flyCenterX;
       ty = cakeCenterY - flyCenterY;
-    } else if (!alive)
+    } else if (!alive) // if fly is dead the target is bottom of the canvas  
     {
       tx = 1;
       ty = height+50 - flyCenterY;
@@ -85,7 +85,7 @@ class mainFly
     dy = int(Math.round(ty/dist*1));
   }
 
-  void moveFly()
+  void moveFly() //Moves fly based on the dy and dx set
   {
     int flySpeed;
     setDxDy();
@@ -97,7 +97,7 @@ class mainFly
     y+=dy*flySpeed;
   }  
 
-  void flyDieingAnimation()                // second set of animation, performed when fly dies
+  void flyDieingAnimation() // second set of animation, performed when fly dies
   {
     if (counter2>=0 && counter2<5) {
       image(die1, x, y, imgSize, imgSize);
@@ -117,7 +117,7 @@ class mainFly
     counter2 +=1;
   }
 
-  void flyClick(int mouseClickX, int mouseClickY)
+  void flyClick(int mouseClickX, int mouseClickY) //Checks if fly is clicked or not. 
   {
     int swatterSize = swatter.imgSize;
     if ((mouseClickX+swatterSize>=x) && (mouseClickX<=x+imgSize )&& (mouseClickY+swatterSize>=y) && (mouseClickY<=y+imgSize) && (alive)) //check is mouse is in the hitbox range and if the fly is alive. player is not able to hit dead fly for points.
@@ -126,7 +126,7 @@ class mainFly
     }
   }
 
-  void killFly()
+  void killFly() // set fly alive to false (kills it) and increments the points.
   {
     alive = false;
     incrementPoints();
@@ -144,17 +144,16 @@ class mainFly
       {
         return true;
       }
-      return false;
+    return false;
   }
-  
+
   void whenFlyEatFood()
   {
     if (flyEatFood())
     {
-              full = true;
-        cake.cakeLifeLost();
+      full = true;
+      cake.cakeLifeLost();
     }
-    
   }
 
   void flyFull()
@@ -165,18 +164,18 @@ class mainFly
 
   void render()
   {
-    if (alive)
+    if (alive) //Does the following when fly is alive 
     {
       whenFlyEatFood();
       flyAnimation();
       moveFly();
     }
-    if (!alive)
+    if (!alive) // does the following when fly is dead
     {
       moveFly();
       flyDieingAnimation();
     }
-    if (full)
+    if (full) // does the following when fly is full, ie has eaten the cake.
     {
       flyFull();
     }
