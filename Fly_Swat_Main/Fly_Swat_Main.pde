@@ -1,7 +1,7 @@
 //Master
 flyswatter swatter;
 Food cake;
-mainFly[] Fly = new mainFly[100];
+mainFly[] Fly = new mainFly[10];
 enum gameStatus {
   Play, SplashScreen, GameOver, WinScreen
 };
