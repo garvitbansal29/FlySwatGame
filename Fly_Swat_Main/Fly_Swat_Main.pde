@@ -3,13 +3,13 @@ flyswatter swatter;
 Food cake;
 mainFly[] Fly = new mainFly[100];
 enum gameStatus {
-  Play, SplashScreen, GameOver
+  Play, SplashScreen, GameOver, WinScreen
 };
 gameStatus currentGameStatus = gameStatus.Play;
 enum gameLvl {
   lvl1, lvl2, lvl3, lvl4
 };
-int [] lvlWaveSize = {0,1, 3, 7, 15};
+int [] lvlWaveSize = {0,1, 3, 6, 10};
 gameLvl currentLvl = gameLvl.lvl1;
 boolean playBtnPressed = false;
 int points=0;
@@ -73,6 +73,11 @@ void draw()
       case lvl4:
         {
           waveSize = lvlWaveSize[4];
+          if (aliveFlies (waveSize, points) == 0)
+          {
+            currentLvl = gameLvl.lvl4;
+            currentGameStatus = gameStatus.WinScreen;
+          }
           break;
         }
       }
@@ -93,9 +98,17 @@ void draw()
   case GameOver:
     {
       textSize(50);
-      text("Game Over", (width/2)-100, (height/2)-50);
+      textAlign(CENTER);
+      text("Game Over", height/2,width/2);
       fill(0);
       break;
+    }
+    case WinScreen:
+    {
+      textSize(50);
+      textAlign(CENTER);
+      text("You Win!!!", height/2,width/2);
+      fill(0);
     }
   }
 }
@@ -127,14 +140,13 @@ void splashScreen()
 
 int aliveFlies (int waveSize, int points)
 {
-  int fullFlies1 = 0;
   int totalFlies = waveSize;
   for (int i = 0; i<waveSize; i++) // Generate 6 flies
   {
     if (Fly[i].flyEatFood())
-      fullFlies1++;
+      fullFlies++;
   }
-  return totalFlies = totalFlies -fullFlies1 - points;
+  return totalFlies = totalFlies - fullFlies - points;
 }
 
 void checkGameOver()
